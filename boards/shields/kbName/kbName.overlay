@@ -2,6 +2,7 @@
 
 / {
     chosen {
+        zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
     };
 
@@ -9,20 +10,41 @@
         compatible = "zmk,kscan-gpio-matrix";
 
         diode-direction = "col2row";
+        wakeup-source;
+
+        /*
+         * Ergogen:
+         *
+         * P0 = D0
+         * P1 = D1
+         * P2 = D2
+         * P3 = D3
+         * P4 = D4
+         * P5 = D5
+         */
 
         col-gpios =
-            <&gpio0 8 GPIO_ACTIVE_HIGH>,   // P0 / D0
-            <&gpio0 6 GPIO_ACTIVE_HIGH>,   // P1 / D1
-            <&gpio0 17 GPIO_ACTIVE_HIGH>,  // P2 / D2
-            <&gpio0 20 GPIO_ACTIVE_HIGH>,  // P3 / D3
-            <&gpio0 22 GPIO_ACTIVE_HIGH>,  // P4 / D4
-            <&gpio0 24 GPIO_ACTIVE_HIGH>;  // P5 / D5
+            <&pro_micro 0 GPIO_ACTIVE_HIGH>,
+            <&pro_micro 1 GPIO_ACTIVE_HIGH>,
+            <&pro_micro 2 GPIO_ACTIVE_HIGH>,
+            <&pro_micro 3 GPIO_ACTIVE_HIGH>,
+            <&pro_micro 4 GPIO_ACTIVE_HIGH>,
+            <&pro_micro 5 GPIO_ACTIVE_HIGH>;
+
+        /*
+         * Ergogen:
+         *
+         * P6 = D6
+         * P7 = D7
+         * P8 = D8
+         * P9 = D9
+         */
 
         row-gpios =
-            <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // P6 / D6
-            <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // P7 / D7
-            <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, // P8 / D8
-            <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; // P9 / D9
+            <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+            <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
     };
 
     default_transform: matrix_transform {
@@ -30,6 +52,16 @@
 
         columns = <6>;
         rows = <4>;
+
+        /*
+         * Physical matrix:
+         *
+         *              D0  D1  D2  D3  D4  D5
+         * TOP           -   X   X   X   X   X
+         * HOME          X   X   X   X   X   X
+         * BOTTOM        X   X   X   X   X   X
+         * THUMB         -   -   -   X   X   X
+         */
 
         map = <
             RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)
