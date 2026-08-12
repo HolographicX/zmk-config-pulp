@@ -13,7 +13,7 @@
 
                 &kp LCTRL  &kp Z       &kp X       &kp C       &kp V       &kp B
 
-                &kp LALT   &kp LGUI    &kp SPACE
+                &kp LALT   &kp LGUI    &kp Q
             >;
         };
     };
