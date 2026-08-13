@@ -6,7 +6,4 @@ if PULP
 config ZMK_KEYBOARD_NAME
     default "pulp"
 
-config EC11
-    default y
-
 endif

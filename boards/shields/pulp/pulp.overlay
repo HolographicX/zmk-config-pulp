@@ -54,6 +54,7 @@
         b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 
         steps = <20>;
+        status = "okay";
     };
 
     sensors: sensors {
