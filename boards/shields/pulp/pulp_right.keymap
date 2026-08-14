@@ -3,9 +3,20 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    behaviors {
+        encoder_scroll: encoder_scroll {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+            tap-ms = <20>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
-
+        
         default_layer {
             bindings = <
                 &kp Y       &kp U       &kp I       &kp O       &kp P
@@ -17,7 +28,7 @@
                 &kp BSPC   &kp TAB     &kp ENTER
             >;
 
-            sensor-bindings = <&msc SCRL_DOWN &msc SCRL_UP>;
+            sensor-bindings = <&encoder_scroll>;
         };
     };
 };
