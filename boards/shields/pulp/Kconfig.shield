@@ -3,6 +3,8 @@
 # No whitespace after the comma or in your keyboard name!
 # Config name will be reused in Kconfig.defconfig
 
-config PULP
-    def_bool $(shields_list_contains,pulp)
- 
+config SHIELD_PULP_LEFT
+    def_bool $(shields_list_contains,pulp_left)
+
+config SHIELD_PULP_RIGHT
+    def_bool $(shields_list_contains,pulp_right)

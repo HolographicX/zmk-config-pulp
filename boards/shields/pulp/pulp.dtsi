@@ -1,27 +1,11 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,matrix_transform = &default_transform;
-    };
-
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
 
         diode-direction = "col2row";
         wakeup-source;
-
-        /*
-         * Ergogen:
-         *
-         * P0 = D0
-         * P1 = D1
-         * P2 = D2
-         * P3 = D3
-         * P4 = D4
-         * P5 = D5
-         */
 
         col-gpios =
             <&pro_micro 0 GPIO_ACTIVE_HIGH>,
@@ -30,15 +14,6 @@
             <&pro_micro 3 GPIO_ACTIVE_HIGH>,
             <&pro_micro 4 GPIO_ACTIVE_HIGH>,
             <&pro_micro 5 GPIO_ACTIVE_HIGH>;
-
-        /*
-         * Ergogen:
-         *
-         * P6 = D6
-         * P7 = D7
-         * P8 = D8
-         * P9 = D9
-         */
 
         row-gpios =
             <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
@@ -65,22 +40,11 @@
         triggers-per-rotation = <20>;
     };
 
-
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
 
         columns = <6>;
         rows = <4>;
-
-        /*
-         * Physical matrix:
-         *
-         *              D0  D1  D2  D3  D4  D5
-         * TOP           -   X   X   X   X   X
-         * HOME          X   X   X   X   X   X
-         * BOTTOM        X   X   X   X   X   X
-         * THUMB         -   -   -   X   X   X
-         */
 
         map = <
             RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)

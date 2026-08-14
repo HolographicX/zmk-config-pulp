@@ -1,9 +1,16 @@
-# Required files for ZMK to recognize the shield
+if SHIELD_PULP_LEFT
 
-if PULP
-
-# Name must be less than 16 characters long!
 config ZMK_KEYBOARD_NAME
     default "pulp"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_PULP_LEFT || SHIELD_PULP_RIGHT
+
+config ZMK_SPLIT
+    default y
 
 endif
