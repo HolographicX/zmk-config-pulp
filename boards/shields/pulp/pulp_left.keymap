@@ -1,9 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-#define BASE 0
-#define LOWER 1
-
 / {
 
     keymap {
@@ -21,7 +18,8 @@
                       &kp Q  &kp W    &kp E    &kp R     &kp T
                       &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G
                       &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B
-                                   &kp LCTRL &kp LALT  &kp RET                 >;
+                                   &kp LCTRL &kp LALT  &kp RET
+                                   >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
