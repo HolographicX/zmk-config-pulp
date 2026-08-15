@@ -24,3 +24,6 @@ include:
 
   - board: nice_nano_v2
     shield: pulp_right
+
+  - board: nice_nano_v2
+    shield: settings_reset
